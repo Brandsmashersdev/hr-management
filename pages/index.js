@@ -7,7 +7,7 @@ const index = () => {
   return (
     <>
       {/* <Seo pageTitle="Preview" /> */}
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Login />
     </>
   );
