@@ -2,7 +2,6 @@ import React from 'react';
 import { NoteProvider } from '../components/NodeProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import '../styles/styles.scss';
 import '../styles/index.scss';
 
 const MyApp = ({ Component, pageProps }) => {
@@ -23,4 +22,3 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 export default MyApp;
-

@@ -1,94 +1,54 @@
 import { db } from "../firebaseConfig"
-import { collection, addDoc } from "firebase/firestore";
-import React, { useState } from "react";
+import { collection, getDocs } from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import Layout from "../Layout";
-
-async function addData(name, email) {
-  try {
-    const docRef = await addDoc(collection(db, "messages"), {
-      name: name,
-      email: email
-    });
-    console.log("doc added with ID ", docRef.id);
-    return true;
-    }
-  catch (error) {
-    console.error("error occured ", error);
-    return false;
-    }
-}
-
+import Layout from "../HR-Layout";
 
 const Employees = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [employees, setEmployees] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const added = await addData(name, email) 
-    if (added) {
-      setName("");
-      setEmail("");
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'Employee_list'));
+        const employeeData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setEmployees(employeeData);
+      } catch (error) {
+        console.error('Error fetching employee data: ', error);
+      }
+    };
 
-      alert("Data added to HRMS")
-    }
-  }
+    fetchEmployees();
+  }, []);
 
   return (
     <Layout>
-      <h1>Employees</h1>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="name">name: </label>
-        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-        <label htmlFor="email">email: </label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <button type="submit">Submit</button>
-      </form>
+    <div>
+      <h1>Employee List</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map(employee => (
+            <tr key={employee.id}>
+              <td>{employee.Name}</td>
+              <td>{employee.Email}</td>
+              <td>{employee.Position}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     </Layout>
   );
 };
 
 export default Employees;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
