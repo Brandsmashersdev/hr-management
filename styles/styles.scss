@@ -1,13 +1,199 @@
+:root {
+  --primary-color:rgba($color: #05152c, $alpha: 1.0);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+.navbar {
+*{
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
 .login_background {
-    background-image: url("../public/bg-sign-in-basic.jpeg");
-    background-repeat: no-repeat;
-  
-    background-size: cover;
-  
+    background-color: #05152c;
     height: 100vh;
     width: 100%;
     margin: auto;
+  }
+  .login_heading{
+    color: white;
+    height: 10vh;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+  }
+  .login_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 85vh;
+  }
+  .login_img{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      height: 80%;
+      width: 80%;
+    }
+  }
+  .login_form_input{
+    background-color: white;
+    height: 70vh;
+    width: 70%;
+    position: relative;
+    left: 18%;
+    top: 10%;
+    border-radius: 20px;
+    h3{
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
+    }
+    .login_form_inputs{
+      display: flex;
+      flex-direction: column;
+      margin: 30px;
+      input{
+        margin-top: 5px;
+        padding: 10px;
+      }
+      button{
+        font-size: 20px;
+        padding: 10px 0;
+      }
+      .for_password{
+        position: relative;
+        left: 70%;
+        font-size: 15px;
+        margin-top: 5px;
+      }
+    }
+  }
+  .navbar {
+    height: 4rem;
+    width: 87%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    color: whitesmoke;
+    padding:10px;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.HRMS {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.HRMS h2 {
+  padding-left: 20px;
+}
+
+.sidebar {
+  width: 13%;
+  background-color: #05152c;
+  color: white;
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-list li div {
+  padding: 15px 5px;
+  border-bottom: 0.5px solid gray;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-list li div:hover {
+  background-color: white;
+  color: #072760;
+}
+
+.nested-list {
+  list-style: url("https://www.flaticon.com/free-icon/right-arrow_271228");
+  // padding: 0 0 0 ;
+  color: rgba($color: #072760, $alpha: 1.0);
+}   
+
+.nested-list li{
+  width: 100%;
+  border-bottom: 0.5px solid gray;
+}
+
+.nested-list li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 5px;
+  width: 100%;
+  display: block;
+}
+
+.nested-list li a:hover {
+  background-color: white;
+  color: #072760;
+}
+
+.nested-list li:hover div .sidebar-icon {
+  filter: invert(0);
+}
+
+.Profile, .Employees {
+  background-color: white;
+  color: #072760;
+}
+
+.active div {
+  background-color: white;
+  color: #072760;
+}
+
+.active div .sidebar-icon {
+  filter: invert(0);
+}
+
+.sidebar-icon {
+  filter: invert(1);
+  margin-right: 5px;
+}
+    box-sizing: border-box;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
   }
