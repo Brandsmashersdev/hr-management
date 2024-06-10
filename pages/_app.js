@@ -2,7 +2,7 @@ import React from 'react';
 import { NoteProvider } from '../components/NodeProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import '../styles/globals.css';
+
 import '../styles/index.scss';
 
 const MyApp = ({ Component, pageProps }) => {
