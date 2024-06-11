@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../pages/NavBar';
+import Navbar from './NavBar';
 
 
 const Layout = ({ children }) => {
@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'profile' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/view-profile">View profile</Link></li>
+                  <li><Link href="/HR-dashboard/Profile">View profile</Link></li>
                   <li><Link href="/HR-dashboard/stats">Stats</Link></li>
                 </ul>
               )}

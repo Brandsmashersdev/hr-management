@@ -15,7 +15,7 @@ const Login = () => {
 
     if (response.ok) {
       // Redirect to a protected page on successful login
-      window.location.href = '/HR-Layout';
+      window.location.href = '/HR-dashboard/Profile';
     } else {
       // Handle login failure
       console.error('Login failed');

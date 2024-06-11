@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaEdit, FaPhone, FaEnvelope, FaCamera, FaTrash, FaArrowLeft, FaLinkedin } from 'react-icons/fa';
+import Layout from "../HR-Layout";
 
 const Profile = () => {
     const [image, setImage] = useState(null);
@@ -76,9 +77,10 @@ const Profile = () => {
         setIsEditing(false);
     };
 
-    const defaultImage = "image.png"; // Path to your default image
+    const defaultImage = "/img/image.png"; // Path to your default image
 
     return (
+        <Layout>
         <div className="profile-container">
             <h2 className="welcome-message">Welcome, Hitanshi</h2>
             <div className="profile-and-details">
@@ -266,6 +268,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
+        </Layout>
     );
 }
 
