@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
               {expandedOption === 'employees' && (
                 <ul className='nested-list'>
                   <li><Link href="/HR-dashboard/Employees">All employees</Link></li>
-                  <li><Link href="/HR-dashboard/add-employees">Add Employee</Link></li>
+                  <li><Link href="/HR-dashboard/AddEmployee">Add Employee</Link></li>
                 </ul>
               )}
             </li>
@@ -106,7 +106,7 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'project' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/current-projects">Current projects</Link></li>
+                  <li><Link href="/HR-dashboard/Current-projects">Current projects</Link></li>
                   <li><Link href="/HR-dashboard/completed-projects">Completed projects</Link></li>
                 </ul>
               )}
@@ -127,6 +127,17 @@ const Layout = ({ children }) => {
                   <li><Link href="/HR-dashboard/past-client">Past client</Link></li>
                 </ul>
               )}
+            </li>
+            <li className={activeItem === 7 ? 'active' : ''} onClick={() => handleClick(7)}>
+              <div onClick={() => handleToggle('logout')}>
+              <Image 
+                src={"/img/sidbarIcons/logout.png"}
+                width={22}
+                height={22}
+                className='sidebar-icon'
+                />
+                Logout
+              </div>
             </li>
           </ul>
         </nav>
