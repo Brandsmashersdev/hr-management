@@ -1,0 +1,85 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .box {
+    width: 80%; 
+    height: 90%; 
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
+  
+    
+  }
+  
+  .company-styling{
+    background-color:white;
+    color:   #000d55;
+    font-size: 20px;   
+  }
+
+  .text-styling{
+
+    text-align:left;
+  }
+
+  .line1{
+    border: 1px solid black;
+    width:100%;
+  }
+    
+  .line2{
+    border: 1px solid black;
+    width:100%;
+  }
+
+
+ 
+
+
+    .table-styling{
+      border: 1px solid black;
+      width: 100%;
+      border-collapse: collapse;
+
+
+    }
+
+
+   
+  
+  .table-styling th, .table-styling td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+      text-align: left;
+  }
+  
+
+  button {
+    padding: 10px 30px;
+    background-color: #5ed931;
+    color: black;     
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 100px;
+    
+}
+
+
+@media (max-width:800px) {
+  .box {
+      width: 100%;
+  
+}
+
+  .table-styling th,
+  .table-styling td {
+      padding: 6px; 
+  }
+} 
+  

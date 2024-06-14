@@ -11,6 +11,8 @@ const Project = () => {
     title: "",
     description: "",
     team: "",
+    startDate: new Date(),
+    deadlineDate: new Date()
   });
 
   useEffect(() => {
@@ -20,6 +22,8 @@ const Project = () => {
         const projectData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
+          startDate: doc.data().startDate?.toDate(),
+          deadlineDate: doc.data().deadlineDate?.toDate()
         }));
         setProjects(projectData);
       } catch (error) {
@@ -46,12 +50,16 @@ const Project = () => {
     try {
       await addDoc(collection(db, 'Project_list'), {
         ...newProject,
+        startDate: new Date(newProject.startDate),
+        deadlineDate: new Date(newProject.deadlineDate)
       });
       setProjects([...projects, { ...newProject }]);
       setNewProject({
         title: "",
         description: "",
         team: "",
+        startDate: new Date(),
+        deadlineDate: new Date()
       });
       handleClose();
     } catch (error) {
@@ -87,17 +95,25 @@ const Project = () => {
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <p>
+              <span><strong>Start date:</strong></span>
+              <span>{project.startDate.toLocaleDateString()}</span>
+            </p>
+            <p>
+              <span><strong>Deadline date:</strong></span>
+              <span>{project.deadlineDate.toLocaleDateString()}</span>
+            </p>
+            <p>
               <span><strong>Team:</strong></span>
               <span>{project.team}</span>
             </p>
-            <button onClick={() => moveToCompleted(project)}>Move to Completed Projects</button>
+            <button onClick={() => moveToCompleted(project)} className="btn">Move to Completed Projects</button>
           </div>
         ))}
       </div>
 
       <Modal show={showModal} handleClose={handleClose}>
         <h2>Add New Project</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="add-new-project add-employee"> {/*className only for css*/}
           <div>
             <label htmlFor="title">Title:</label>
             <input
@@ -117,6 +133,7 @@ const Project = () => {
               value={newProject.description}
               onChange={handleChange}
               required
+              maxLength={200}
             ></textarea>
           </div>
           <div>
@@ -130,7 +147,29 @@ const Project = () => {
               required
             />
           </div>
-          <button type="submit">Add Project</button>
+          <div>
+            <label htmlFor="startDate">Start Date:</label>
+            <input
+              type="date"
+              id="startDate"
+              name="startDate"
+              value={newProject.startDate.toISOString().split('T')[0]}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="deadlineDate">Deadline Date:</label>
+            <input
+              type="date"
+              id="deadlineDate"
+              name="deadlineDate"
+              value={newProject.deadlineDate.toISOString().split('T')[0]}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn">Add Project</button>
         </form>
       </Modal>
     </Layout>

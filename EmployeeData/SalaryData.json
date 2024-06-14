@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "date": "2024-06-01",
+        "leaves": 2,
+        "workingDays": 20,
+        "salary": 3000
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "date": "2024-06-01",
+        "leaves": 1,
+        "workingDays": 21,
+        "salary": 3200
+    },
+    {
+        "id": 3,
+        "name": "Alice Johnson",
+        "date": "2024-06-01",
+        "leaves": 3,
+        "workingDays": 19,
+        "salary": 2800
+    }
+]

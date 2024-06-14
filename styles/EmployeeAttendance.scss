@@ -1,0 +1,21 @@
+.Attendance-styling {
+    color: black;
+    font-size: 20px;
+    position: relative; /* To position the pseudo-element relative to the text */
+}
+
+.Attendance-styling::before {
+    content: '\2190';
+    margin-right: 10px; 
+    font-size: 50px;
+    color: darkblue; 
+    font-weight: bold; 
+}
+
+
+.attendance-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+   border: 1px solid black;
+}

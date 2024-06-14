@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 // import Seo from "../components/Seo";
 import Layout from './HR-Layout';
-import Login from "./login";
+import Login from "./Login";
 
 const index = () => {
   return (

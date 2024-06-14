@@ -38,8 +38,24 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'profile' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/Profile">View profile</Link></li>
-                  <li><Link href="/HR-dashboard/stats">Stats</Link></li>
+                  <li><Link href="/HR-dashboard/Profile">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                  View profile</Link></li>
+                  <li><Link href="/HR-dashboard/stats">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Stats</Link></li>
                 </ul>
               )}
             </li>
@@ -55,8 +71,24 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'employees' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/Employees">All employees</Link></li>
-                  <li><Link href="/HR-dashboard/AddEmployee">Add Employee</Link></li>
+                  <li><Link href="/HR-dashboard/Employees">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    All employees</Link></li>
+                  <li><Link href="/HR-dashboard/AddEmployee">   
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                  Add Employee</Link></li>
                 </ul>
               )}
             </li>
@@ -72,8 +104,24 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'attendance' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/attendance-record">Attendance Records</Link></li>
-                  <li><Link href="/HR-dashboard/working-hour">Working hour</Link></li>
+                  <li><Link href="/HR-dashboard/attendance-record">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                  Attendance Records</Link></li>
+                  <li><Link href="/HR-dashboard/working-hour">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Working hour</Link></li>
                 </ul>
               )}
             </li>
@@ -89,8 +137,24 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'payrolls' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/payslip">Payslip</Link></li>
-                  <li><Link href="/HR-dashboard/salary">Salary</Link></li>
+                  <li><Link href="/HR-dashboard/payslip">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Payslip</Link></li>
+                  <li><Link href="/HR-dashboard/salary">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Salary</Link></li>
                 </ul>
               )}
             </li>
@@ -106,25 +170,24 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'project' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/Current-projects">Current projects</Link></li>
-                  <li><Link href="/HR-dashboard/completed-projects">Completed projects</Link></li>
-                </ul>
-              )}
-            </li>
-            <li className={activeItem === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
-              <div onClick={() => handleToggle('client')}>
-              <Image 
-                src={"/img/sidbarIcons/client.png"}
-                width={22}
-                height={22}
-                className='sidebar-icon'
-                />
-                Client
-              </div>
-              {expandedOption === 'client' && (
-                <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/current-client">Current client</Link></li>
-                  <li><Link href="/HR-dashboard/past-client">Past client</Link></li>
+                  <li><Link href="/HR-dashboard/Current-projects">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Current projects</Link></li>
+                  <li><Link href="/HR-dashboard/CompletedProjects">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Completed projects</Link></li>
                 </ul>
               )}
             </li>

@@ -1,5 +1,5 @@
 :root {
-  --primary-color:rgba($color: #05152c, $alpha: 1.0);
+  --primary-color: rgba($color: #05152c, $alpha: 1.0);
 }
 
 * {
@@ -9,86 +9,97 @@
 }
 
 .login_background {
-    background-color: #05152c;
-    height: 100vh;
-    width: 100%;
-    margin: auto;
+  background-color: #05152c;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+}
+
+.login_heading {
+  color: white;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 85vh;
+}
+
+.login_img {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 80%;
+    width: 80%;
   }
-  .login_heading{
-    color: white;
+}
+
+.login_form_input {
+  background-color: white;
+  height: 70vh;
+  width: 70%;
+  position: relative;
+  left: 18%;
+  top: 10%;
+  border-radius: 20px;
+
+  h3 {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 10vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-  .login_form{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 85vh;
-  }
-  .login_img{
-    margin-left: 20px;
+
+  .login_form_inputs {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-      height: 80%;
-      width: 80%;
+    flex-direction: column;
+    margin: 30px;
+
+    input {
+      margin-top: 5px;
+      padding: 10px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px 0;
+    }
+
+    .for_password {
+      position: relative;
+      left: 70%;
+      font-size: 15px;
+      margin-top: 5px;
     }
   }
-  .login_form_input{
-    background-color: white;
-    height: 70vh;
-    width: 70%;
-    position: relative;
-    left: 18%;
-    top: 10%;
-    border-radius: 20px;
-    h3{
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10vh;
-    }
-    .login_form_inputs{
-      display: flex;
-      flex-direction: column;
-      margin: 30px;
-      input{
-        margin-top: 5px;
-        padding: 10px;
-      }
-      button{
-        font-size: 20px;
-        padding: 10px 0;
-      }
-      .for_password{
-        position: relative;
-        left: 70%;
-        font-size: 15px;
-        margin-top: 5px;
-      }
-    }
-  }
-  .navbar {
-    height: 4rem;
-    width: 87%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    color: whitesmoke;
-    padding:10px;
-    align-items: center;
+}
+
+.navbar {
+  height: 4rem;
+  width: 87%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  color: whitesmoke;
+  padding: 10px;
+  align-items: center;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .HRMS {
@@ -112,8 +123,12 @@ body {
   padding: 0;
 }
 
+.sidebar li {
+  margin: 0px;
+}
+
 .sidebar-list li div {
-  padding: 15px 5px;
+  padding: 20px 5px;
   border-bottom: 0.5px solid gray;
   display: flex;
   align-items: center;
@@ -128,31 +143,36 @@ body {
   list-style: url("https://www.flaticon.com/free-icon/right-arrow_271228");
   // padding: 0 0 0 ;
   color: rgba($color: #072760, $alpha: 1.0);
-}   
+}
 
-.nested-list li{
+.nested-list li {
   width: 100%;
   border-bottom: 0.5px solid gray;
+  margin: 0px;
 }
 
 .nested-list li a {
   text-decoration: none;
+  // height: 3rem;
   color: white;
-  padding: 10px 5px;
+  padding: 15px 5px;
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .nested-list li a:hover {
   background-color: white;
   color: #072760;
+  text-decoration: none;
 }
 
 .nested-list li:hover div .sidebar-icon {
   filter: invert(0);
 }
 
-.Profile, .Employees {
+.Profile,
+.Employees {
   background-color: white;
   color: #072760;
 }
@@ -170,31 +190,32 @@ body {
   filter: invert(1);
   margin-right: 5px;
 }
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    margin-bottom: 10px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #000;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
 
-  .employee-list-table {
-    width: 100%;
-  }
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.employee-list-table {
+  width: 100%;
+}
 
 table {
   margin-top: 30px;
-}  
+}
 
 th {
   border-bottom: 2px solid black;
@@ -210,14 +231,16 @@ td {
   border-bottom: 1px solid gray;
   border-right: 1px solid gray;
 }
+
 .column1 {
   border-left: 1px solid gray;
 }
+
 tr {
   height: 40px;
-  }
+}
 
-tr:hover{
+tr:hover {
   background-color: #468bbd;
 }
 
@@ -240,13 +263,13 @@ td button {
 }
 
 .epm-table-row {
-  padding: 5px 0px ;
+  padding: 5px 0px;
 }
 
 .employee-list-table tbody tr td {
-    // padding-left: 5px;
-    text-align: center;
-  }
+  // padding-left: 5px;
+  text-align: center;
+}
 
 
 //ADD EMPLOYEE
@@ -387,12 +410,12 @@ td button {
 .AddProjectForm {
 
   border: 1px solid gray;
-border-radius: 10px;
-padding: 20px;
-width: 400px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-margin-top: 20px;
-border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 20px;
+  border: none;
   box-shadow: none;
   width: 100%;
 }
@@ -413,8 +436,8 @@ border: none;
   background: white;
   padding: 20px;
   border-radius: 8px;
-  width: 500px;
-  height: 400px;
+  width: max-content;
+  height: max-content;
   text-align: center;
   margin: auto;
   margin-top: 100px;
@@ -426,4 +449,17 @@ border: none;
 
 .display-none {
   display: none;
+}
+
+.add-new-project {
+  border: none;
+  box-shadow: none;
+  margin: auto;
+}
+
+.add-new-project textarea {
+  padding: 5px;
+  width: 100%;
+  max-width: 355px;
+  min-width: 355px;
 }
