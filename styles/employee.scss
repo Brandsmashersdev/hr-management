@@ -1,0 +1,110 @@
+.login_background {
+    background-color: #05152c;
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+  }
+  .login_heading{
+    color: white;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 85vh;
+  }
+  .login_img{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      height: 80%;
+      width: 80%;
+    }
+  }
+  .login_form_input{
+    background-color: white;
+    height: 70vh;
+    width: 70%;
+    position: relative;
+    left: 18%;
+    top: 10%;
+    border-radius: 20px;
+    h3{
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
+    }
+    .login_form_inputs{
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      margin: 30px;
+      position: relative;
+      input{
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: .5px solid black;
+      }
+      button{
+        font-size: 20px;
+        outline: 1px solid black;
+        padding: 10px 0;
+        margin-top: 15px;
+      }
+      .for_password{
+        position: absolute;
+        right: 10px;
+        font-size: 15px;
+        margin-top: 10px;
+        top: 89%;
+        color: black;
+        text-decoration: none;
+      }
+    .eye-icon {
+        position: absolute;
+        right: 20px;
+        top: 49%;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    }
+  }
+.logout{
+    cursor: pointer;
+}
+@media screen and ((min-width:481px) and (max-width:768px)) {
+    .login_form_input{
+        height: 60vh;
+    }
+}
+@media screen and ((min-width:320px) and (max-width:480px)) {
+    .login_img{
+        display: none;
+    }
+    .login_form{
+        grid-template-columns: 1fr;
+    }
+    .login_form_input{
+        .login_form_inputs{
+            .for_password{
+                font-size: 12px;
+            }
+            .eye-icon{
+                right: 10px;
+            }
+            }
+            .help p{
+                font-size: 12px;
+            }
+    }
+}

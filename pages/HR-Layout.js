@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from './NavBar';
+import Navbar from '../pages/NavBar';
+import { useRouter } from 'next/router';
 
 
 const Layout = ({ children }) => {
@@ -16,6 +17,14 @@ const Layout = ({ children }) => {
   const handleClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
   };
+  const router = useRouter();
+  const handleLogout = async () => {
+        await fetch('/api/logout', {
+            method: 'POST',
+        });
+
+        router.push('/login');
+    };
 
   return (
     <>
@@ -33,6 +42,7 @@ const Layout = ({ children }) => {
                 width={22}
                 height={22}
                 className='sidebar-icon'
+                alt="Error"
                 />
                 Profile
               </div>
@@ -98,6 +108,7 @@ const Layout = ({ children }) => {
                 src={"/img/sidbarIcons/attendance.png"}
                 width={22}
                 height={22}
+                alt='Error'
                 className='sidebar-icon'
                 />
                 Attendance
@@ -125,9 +136,10 @@ const Layout = ({ children }) => {
                 </ul>
               )}
             </li>
-            <li className={activeItem === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
+            <li className={activeItem === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
               <div onClick={() => handleToggle('payrolls')}>
               <Image 
+                alt='error'
                 src={"/img/sidbarIcons/salary.png"}
                 width={22}
                 height={22}
@@ -158,13 +170,14 @@ const Layout = ({ children }) => {
                 </ul>
               )}
             </li>
-            <li className={activeItem === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
+            <li className={activeItem === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
               <div onClick={() => handleToggle('project')}>
               <Image 
                 src={"/img/sidbarIcons/project.png"}
                 width={22}
                 height={22}
                 className='sidebar-icon'
+                alt='Error'
                 />
                 Projects
               </div>
@@ -202,6 +215,7 @@ const Layout = ({ children }) => {
                 Logout
               </div>
             </li>
+
           </ul>
         </nav>
 
