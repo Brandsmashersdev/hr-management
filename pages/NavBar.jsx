@@ -9,7 +9,7 @@ const Navbar = () => {
       <h3>Dashboard</h3>
       </div>
       
-      <button>Check In</button>
+      {/* <button>Check In</button> */}
 
     </div>
   </>

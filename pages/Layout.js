@@ -5,7 +5,7 @@ import Navbar from '../pages/NavBar';
 import { useRouter } from 'next/router';
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children}) => {
   const [expandedOption, setExpandedOption] = useState(null);
 
   const handleToggle = (option) => {

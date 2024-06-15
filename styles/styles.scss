@@ -8,70 +8,6 @@
   box-sizing: border-box;
 }
 
-.login_background {
-    background-color: #05152c;
-    height: 100vh;
-    width: 100%;
-    margin: auto;
-  }
-  .login_heading{
-    color: white;
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .login_form{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 85vh;
-  }
-  .login_img{
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-      height: 80%;
-      width: 80%;
-    }
-  }
-  .login_form_input{
-    background-color: white;
-    height: 70vh;
-    width: 70%;
-    position: relative;
-    left: 18%;
-    top: 10%;
-    border-radius: 20px;
-    h3{
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10vh;
-    }
-    .login_form_inputs{
-      display: flex;
-      flex-direction: column;
-      margin: 30px;
-      input{
-        margin-top: 5px;
-        padding: 10px;
-      }
-      button{
-        font-size: 20px;
-        padding: 10px 0;
-      }
-      .for_password{
-        position: relative;
-        left: 70%;
-        font-size: 15px;
-        margin-top: 5px;
-      }
-    }
-  }
   .navbar {
     height: 4rem;
     width: 87%;
@@ -85,12 +21,6 @@
     padding:10px;
     align-items: center;
 }
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .HRMS {
   height: 4rem;
   display: flex;
@@ -126,7 +56,6 @@ body {
 
 .nested-list {
   list-style: url("https://www.flaticon.com/free-icon/right-arrow_271228");
-  // padding: 0 0 0 ;
   color: rgba($color: #072760, $alpha: 1.0);
 }   
 
