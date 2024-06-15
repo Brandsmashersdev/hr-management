@@ -136,7 +136,7 @@ const Layout = ({ children }) => {
                 </ul>
               )}
             </li>
-            <li className={activeItem === 3 ? 'active' : ''} onClick={() => handleClick(3)}>
+            <li className={activeItem === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
               <div onClick={() => handleToggle('payrolls')}>
               <Image 
                 alt='error'
@@ -149,7 +149,7 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'payrolls' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/payslip">
+                  <li><Link href="/HR-dashboard/Payslip">
                   <Image 
                     src={"/img/sidbarIcons/right.png"}
                     width={15}
@@ -158,7 +158,7 @@ const Layout = ({ children }) => {
                     style={{filter:"none"}}
                   />
                     Payslip</Link></li>
-                  <li><Link href="/HR-dashboard/salary">
+                  <li><Link href="/HR-dashboard/Salary">
                   <Image 
                     src={"/img/sidbarIcons/right.png"}
                     width={15}
@@ -170,7 +170,7 @@ const Layout = ({ children }) => {
                 </ul>
               )}
             </li>
-            <li className={activeItem === 4 ? 'active' : ''} onClick={() => handleClick(4)}>
+            <li className={activeItem === 5 ? 'active' : ''} onClick={() => handleClick(5)}>
               <div onClick={() => handleToggle('project')}>
               <Image 
                 src={"/img/sidbarIcons/project.png"}

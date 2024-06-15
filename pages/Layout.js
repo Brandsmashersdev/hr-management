@@ -108,32 +108,15 @@ const Layout = ({ children}) => {
                 </ul>
               )}
             </li>
-            {/* <li className={activeItem === 6 ? 'active' : ''} onClick={() => handleClick(6)}>
-              <div onClick={() => handleToggle('client')}>
-              <Image 
-                src={"/img/sidbarIcons/client.png"}
-                width={22}
-                height={22}
-                className='sidebar-icon'
-                />
-                Client
-              </div>
-              {expandedOption === 'client' && (
-                <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/current-client">Current client</Link></li>
-                  <li><Link href="/HR-dashboard/past-client">Past client</Link></li>
-                </ul>
-              )}
-            </li> */}
             <li className={activeItem === 5 ? 'active' : '' } >
               <div onClick={handleLogout} className='logout'>
-              {/* <Image 
+              <Image 
                 src={"/img/sidbarIcons/logout.png"}
                 width={22}
                 height={22}
                 className='sidebar-icon'
                 alt='Error'
-                /> */}
+                />
                 Logout
               </div>
             </li>
