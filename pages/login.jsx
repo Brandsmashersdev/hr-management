@@ -1,38 +1,43 @@
-// pages/login.js
+// 'use client'
 import { useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
-import Layout from './Layout'
-import Profile from './Employee-dashboard/[username]/profile'
-
+import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {auth} from './firebaseConfig';
+import {useRouter} from 'next/router';
+import dynamic from 'next/dynamic';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  
+  const [username, setUsername] = useState('mannmittal622@gmail.com');
+  const [password, setPassword] = useState('mannmittal');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
       setPasswordVisible(!passwordVisible);
   }
-  const [message, setMessage] = useState('');
-
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('/api/login', { username, password });
-      if (response.data.message === 'ok') {
-        window.location.href = `/Employee-dashboard/${username}/profile`;
-          } else {
-            // Handle login failure
-            console.error('Login failed');
-          }
-    } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('An unexpected error occurred');
-      }
+  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  // const handleSignUp = async () =>{
+  //   try{
+  //     const res = await createUserWithEmailAndPassword(username,password);
+  //     sessionStorage.setItem('user',true);
+  //     setUsername('');
+  //     setPassword('');
+  //   }catch(e){
+  //     console.error(e);
+  //   }
+  // }
+  const handleSignIn = async () =>{
+    try{
+      await signInWithEmailAndPassword(username,password);
+      sessionStorage.setItem('user',true);
+      setUsername('');
+      setPassword('');
+      window.location.href = `/Employee-dashboard/${username}/profile`;
+    }catch(e){
+      console.error(e);
     }
-  };
-
+  }
 
 
   return (
@@ -57,10 +62,10 @@ const Login = () => {
                 <Link href="/change_password" className='for_password'>Forget password</Link>
              </div>
              <div className='login_form_inputs'>
-              <button onClick={handleLogin} className='logout'>Login</button>
+              <button onClick={handleSignIn} className='logout'>Login</button>
              </div>
              <div className='help'><p style={{textAlign:"center", margin:"30px"}}>Unable to login? Kindly connect with <u>IT Support Team</u> </p></div>
-             <p>{message}</p>
+             {/* <p>{message}</p> */}
       </div>
         </div>
         <div className='login_img'>
@@ -71,4 +76,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+// export default Login;
+export default dynamic(() => Promise.resolve(Login), { ssr: false });

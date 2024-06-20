@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../pages/NavBar';
-import { useRouter } from 'next/router';
-
+import {auth} from './firebaseConfig';
+import { signOut } from 'firebase/auth';
 
 const Layout = ({ children}) => {
   const [expandedOption, setExpandedOption] = useState(null);
@@ -17,14 +17,15 @@ const Layout = ({ children}) => {
   const handleClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
   };
-  const router = useRouter();
-  const handleLogout = async () => {
-        await fetch('/api/logout', {
-            method: 'POST',
-        });
-
-        router.push('/login');
-    };
+  const Handlelogout = async () => {
+    try {
+      await signOut(auth); 
+      sessionStorage.removeItem('user'); 
+      window.location.href = '/'; 
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  }
 
   return (
     <>
@@ -48,7 +49,7 @@ const Layout = ({ children}) => {
               </div>
               {expandedOption === 'profile' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/Profile">View profile</Link></li>
+                  <li><Link href={`/Employee-dashboard/${username}/profile`}>View profile</Link></li>
                   <li><Link href="/HR-dashboard/stats">Stats</Link></li>
                 </ul>
               )}
@@ -85,8 +86,8 @@ const Layout = ({ children}) => {
               </div>
               {expandedOption === 'payrolls' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/payslip">Payslip</Link></li>
-                  <li><Link href="/HR-dashboard/salary">Salary</Link></li>
+                  {/* <li><Link href="/Employee-dashboard/Payslip">Payslip</Link></li> */}
+                  <li><Link href="/Employee-dashboard/Salary">Salary</Link></li>
                 </ul>
               )}
             </li>
@@ -109,7 +110,7 @@ const Layout = ({ children}) => {
               )}
             </li>
             <li className={activeItem === 5 ? 'active' : '' } >
-              <div onClick={handleLogout} className='logout'>
+              <div onClick={Handlelogout} className='logout'>
               <Image 
                 src={"/img/sidbarIcons/logout.png"}
                 width={22}

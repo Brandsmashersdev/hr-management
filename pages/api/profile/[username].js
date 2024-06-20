@@ -11,8 +11,6 @@ export default async function handler(req, res) {
   try {
     const q = query(collection(db, 'Employee_data'), where('username', '==', username));
     const querySnapshot = await getDocs(q);
-    // console.log('Query snapshot:', querySnapshot);
-
     if (querySnapshot.empty) {
       res.status(404).json({ error: 'Profile not found' });
       return;
@@ -20,7 +18,6 @@ export default async function handler(req, res) {
 
     let profileData = {};
     querySnapshot.forEach((doc) => {
-      // console.log('Document data:', doc.data());
       profileData = doc.data();
     });
 

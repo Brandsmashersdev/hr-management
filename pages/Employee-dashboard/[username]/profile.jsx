@@ -1,14 +1,31 @@
+'use client'
 import { useRouter } from 'next/router';
 import Layout from '../../Layout';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { FaEdit, FaPhone, FaEnvelope, FaCamera, FaTrash, FaArrowLeft, FaLinkedin } from 'react-icons/fa';
+import { FaEdit, FaCamera, FaTrash, FaArrowLeft } from 'react-icons/fa';
+import {storage} from "../../firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useAuthState} from 'react-firebase-hooks/auth';
+import {auth} from '../../firebaseConfig';
 
 export default function ProfilePage() {
+  const [user] = useAuthState(auth);
+  const router = useRouter();
+  const { username } = router.query;
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [profileData, setProfileData] = useState(null);
+    const fileInputRef = useRef(null);
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        const storedUser = sessionStorage.getItem('user');
+        if (!storedUser) {
+          router.push('/');
+        }
+      }
+    }, [router]);
     const [userInfo, setUserInfo] = useState({
       name: '',
       image:'',
@@ -23,29 +40,23 @@ export default function ProfilePage() {
       emergencyContact: '',
       department: '',
       employmentType: '',
-      workingHours: '', // Default value for Full-Time
+      workingHours: '',
     });
     const handleGoBack = () => {
-                setIsEditing(false);
-            };
+      setIsEditing(false);
+    };
 
-            function calculateAge(dobString) {
-                const dob = new Date(dobString);
-                const today = new Date();
-                let age = today.getFullYear() - dob.getFullYear();
-                const monthDifference = today.getMonth() - dob.getMonth();
-                const dayDifference = today.getDate() - dob.getDate();
-                // Adjust age if today's date is before the birthday in the current year
-                if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-                    age--;
-                }
-                return age;
-            }
-            
-    const router = useRouter();
-    const { username } = router.query;
-    const fileInputRef = useRef(null);
-  
+    function calculateAge(dobString) {
+      const dob = new Date(dobString);
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const monthDifference = today.getMonth() - dob.getMonth();
+      const dayDifference = today.getDate() - dob.getDate();
+      if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+          age--;
+        }
+        return age;
+      }
     useEffect(() => {
       if (username) {
         fetchProfileData(username);
@@ -56,7 +67,7 @@ export default function ProfilePage() {
         setUserInfo({
           username: profileData.username || '',
           name: profileData.name || '',
-          image:profileData.image|| '',
+          image:profileData.image|| ' ',
           designation: profileData.designation || '',
           email: profileData.email || '',
           phoneNumber: profileData.phoneNumber || '+1 123-456-7890',
@@ -81,14 +92,29 @@ export default function ProfilePage() {
         console.error('Error fetching profile data:', error);
       }
     };
-  
-    
     const handleSave = async () => {
       try {
+      //   if (image) {
+      //     const storageRef = ref(storage, 'profile_images/username/image.jpg');
+      //     console.log("Image Url",image);
+      //   const snapshot = await uploadBytes(storageRef, image);
+
+      //   // Get the download URL of the uploaded file
+      //   const imageUrl = await getDownloadURL(snapshot.ref);
+      //   console.log('Image uploaded and available at:', imageUrl);
+      // }
+  
+      // // Update user info including image URL in Firebase Database
+      // const updatedUserInfo = {
+      //   ...userInfo,
+      //   image: imageUrl
+      // };
+    
+        // Update user info including image URL in Firebase Database
         const response = await axios.post('/api/updateUserInfo', userInfo);
         if (response.status === 200) {
-          setIsEditing(false); // Exit editing mode after successful save
-          fetchProfileData(username); // Refresh profile data after save
+          setIsEditing(false);
+          fetchProfileData(username);
         } else {
           throw new Error('Failed to update user info');
         }
@@ -103,8 +129,6 @@ export default function ProfilePage() {
         setImage(file);
         const reader = new FileReader();
         reader.onloadend = () => {
-            const imageUrl = reader.result; // This is the URL of the selected image
-      console.log('Image URL:', imageUrl); // Print the URL to the console
           setPreview(reader.result);
         };
         reader.readAsDataURL(file);
@@ -136,10 +160,12 @@ export default function ProfilePage() {
     const defaultImage = '/img/image.png';
 
   return (
+    <>
+    {user && user.email === username ?(
     <Layout>
       {profileData && (
             <div className="profile-container">
-                <h2 className="welcome-message">Welcome, {profileData.username}</h2>
+               
                 <div className="profile-and-details">
                     <div className="profile-box">
                         <div className="profile-content">
@@ -149,8 +175,9 @@ export default function ProfilePage() {
                                 <FaArrowLeft />
                             </div>
                         )}
-                                {!preview && <img src={defaultImage} alt="Default Profile" className="profile-photo" />}
-                                {preview && <img src={preview} alt="Profile Preview" className="profile-photo" />}
+                                {/* {!preview && <img src={defaultImage} alt="Default Profile" className="profile-photo" />}
+                                {preview && <img src={userInfo.image} alt="Profile Preview" className="profile-photo" />} */}
+                                {profileData.image ===""?( <img src={profileData.image} alt="Profile Preview" className="profile-photo" />):( <img src={defaultImage} alt="Profile Preview" className="profile-photo" />)}
                                 {isEditing && (
                                     <div className="photo-hover-options">
                                         <button className="edit-button" onClick={handleAddImage}>
@@ -200,7 +227,7 @@ export default function ProfilePage() {
                     ) : (
                         <div className="detail"><strong>Date of Birth:</strong> {userInfo.dob}</div>
                     )}
-                        {/* <div className="detail"><strong>Date of Birth:</strong> {userInfo.dob}</div> */}
+
                         <div className="detail"><strong>Date of Joining:</strong> {userInfo.hireDate}</div>
                         <div className="detail"><strong>Age:</strong> {userInfo.age}</div>
                         {isEditing ? (
@@ -277,5 +304,7 @@ export default function ProfilePage() {
             </div>
         )}
             </Layout>
+            ):(<p>Cannot visit other user profile go to <a href="/">Login</a></p>)}
+            </>
   );
 }

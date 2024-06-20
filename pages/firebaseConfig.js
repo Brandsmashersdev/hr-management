@@ -2,24 +2,19 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getFirestore} from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from 'firebase/auth';
+import 'firebase/auth';
+import 'firebase/firestore'; 
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDL2qBCc-pEOX-MIOnRG2wZsQkTVq1ENdQ",
-  authDomain: "hrms-43149.firebaseapp.com",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   databaseURL: "https://hrms-43149-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "hrms-43149",
-  storageBucket: "hrms-43149.appspot.com",
-  messagingSenderId: "211590354476",
-  appId: "1:211590354476:web:e4796a85d1c92bd2a5e389",
-  measurementId: "G-HT1SXGGMHJ"
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
-
-// Initialize Firebase
 
 let firebaseApp;
 if (!getApps().length) {
@@ -30,5 +25,6 @@ if (!getApps().length) {
 
 const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
+const auth = getAuth(firebaseApp);
 
-export{db,storage};
+export{db,storage,auth};

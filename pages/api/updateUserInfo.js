@@ -1,12 +1,9 @@
 import { db } from '../firebaseConfig';
-// import { updateDoc, doc, collection } from 'firebase/firestore';
-import { collection, query, where, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const userInfo = req.body;
-
-    // Validate userInfo to ensure all required fields are present
     if (!userInfo.username) {
       return res.status(400).json({ error: 'Username is required' });
     }
@@ -17,10 +14,8 @@ export default async function handler(req, res) {
   
         let userRef;
         if (querySnapshot.empty) {
-          // If no document exists with the provided username, create a new document
           userRef = doc(collection(db, 'Employee_data'));
         } else {
-          // If document exists, update the first document found (assuming username is unique)
           querySnapshot.forEach((doc) => {
             userRef = doc.ref;
           });
