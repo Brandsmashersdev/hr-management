@@ -124,7 +124,7 @@ const Layout = ({ children }) => {
                     style={{filter:"none"}}
                   />
                   Attendance Records</Link></li>
-                  <li><Link href="/HR-dashboard/working-hour">
+                  <li><Link href="/HR-dashboard/WorkingHour">
                   <Image 
                     src={"/img/sidbarIcons/right.png"}
                     width={15}
@@ -133,6 +133,15 @@ const Layout = ({ children }) => {
                     style={{filter:"none"}}
                   />
                     Working hour</Link></li>
+                  <li><Link href="/HR-dashboard/LeaveRequest">
+                  <Image 
+                    src={"/img/sidbarIcons/right.png"}
+                    width={15}
+                    height={15}
+                    className='sidebar-icon'
+                    style={{filter:"none"}}
+                  />
+                    Leave Request</Link></li>
                 </ul>
               )}
             </li>
