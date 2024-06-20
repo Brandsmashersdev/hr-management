@@ -37,7 +37,7 @@ const AddEmployee = () => {
   return (
     <Layout>
       <div className="Add-emp-container">
-        <h2>Add New Employee</h2>
+        <h2>Employee / Add Employee</h2>
         <form onSubmit={handleSubmit} className="add-employee">
           <div>
             <label htmlFor="Name">Employee Name:</label>

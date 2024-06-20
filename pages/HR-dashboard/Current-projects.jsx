@@ -86,6 +86,7 @@ const Project = () => {
 
   return (
     <Layout>
+      <h1>Projects / Current Projects</h1>
       <div className="project-container">
         <div className="addProject" onClick={handleShow}>
           <h1>+</h1>

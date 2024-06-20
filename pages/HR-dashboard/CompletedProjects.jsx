@@ -32,6 +32,7 @@ const Project = () => {
 
   return (
     <Layout>
+      <h1>Projects / Completed Projects</h1>
       <div className="project-container">
 
         {projects.map((project) => (

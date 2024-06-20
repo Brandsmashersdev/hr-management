@@ -7,12 +7,18 @@ import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
   const [expandedOption, setExpandedOption] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleToggle = (option) => {
     setExpandedOption(expandedOption === option ? null : option);
   };
 
   const [activeItem, setActiveItem] = useState(null);
+
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
 
   const handleClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
@@ -28,9 +34,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <div className="navbar">
+      <div>
+      {/* logo */}
+      <h3>HR Dashboard</h3>
+      </div>
+      
+      <div className="menu-icon" onClick={handleSidebarToggle}>
+          &#9776;
+        </div>
+
+     </div>
+
+
       <div style={{ display: 'flex', minHeight: '100vh'}}>
-        <nav className='sidebar'>
+        <nav className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
           <div className='HRMS'>
             <h2>HRMS</h2>
             </div>
@@ -115,7 +134,7 @@ const Layout = ({ children }) => {
               </div>
               {expandedOption === 'attendance' && (
                 <ul className='nested-list'>
-                  <li><Link href="/HR-dashboard/attendance-record">
+                  <li><Link href="/HR-dashboard/EmployeeAttendance">
                   <Image 
                     src={"/img/sidbarIcons/right.png"}
                     width={15}

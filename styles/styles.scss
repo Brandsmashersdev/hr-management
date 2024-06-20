@@ -240,7 +240,7 @@ tr {
 }
 
 tr:hover {
-  background-color: #468bbd;
+  background-color: rgb(224, 224, 224);
 }
 
 td input {
@@ -462,3 +462,149 @@ td button {
   max-width: 355px;
   min-width: 355px;
 }
+
+
+#salary-slip {
+  width: 750px;
+  padding: 10px;
+}
+
+.PayableAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gray;
+  margin: 15px 0px;
+  padding: 5px;
+}
+
+.download {
+  margin: auto;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba($color: #000000, $alpha: 0.75) !important; 
+}
+
+.Attendance-styling {
+  color: darkblue;
+  font-size: 24px;
+  text-align: left;
+  position: relative;
+  
+  }
+
+.Attendance-styling::before {
+  content: '\2190';
+  font-size: 50px;
+  color: darkblue; 
+  font-weight: bold;
+ 
+ 
+}
+
+.attendance-table {
+      width: 90%;
+      border-collapse: collapse;
+      margin-top: 20px;
+     border: 1px solid black;
+  }
+  
+
+
+.attendance-container{
+width: 100%;
+}
+
+.attendance-table {
+  width: 100%;
+  border: 2px solid #ddd;
+  border-collapse: collapse;
+     
+}
+
+.attendance-table th, .attendance-table td {
+  border: 1px solid #060606;
+  text-align: center;
+}
+
+.attendance-table th {
+  background-color: #f8fbfc;
+  color: black;
+}
+
+.attendance-table td {
+  font-size: 16px;
+}
+
+
+.attendance-table tr:hover {
+  background-color: #6464e9;
+}
+
+
+.style{
+  width: 200px;
+  color:Black;
+  font-weight: bold;
+}
+
+
+
+.day-column {
+  width: 30px; 
+}
+
+.present {
+  color: green;
+  font-weight: bold;
+}
+
+.absent {
+  color: red;
+  font-weight: bold;
+}
+
+.leave {
+  color: rgb(6, 219, 251);
+  font-weight: bold;
+}
+
+.holiday {
+  color: orange;
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  .attendance-table th,
+  .attendance-table td {
+      padding: 6px; 
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 40%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -40%;
+    transition: all .3s ease;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .navbar {
+    width: 100%;
+  }
+}
+
+.menu-icon {
+  display: none;
+}
+
